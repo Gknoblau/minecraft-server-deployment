@@ -22,21 +22,27 @@ data "aws_ami" "amazon-linux-2" {
   }
 }
 
-resource "aws_instance" "minecraft" {
+resource "aws_spot_instance_request" "minecraft" {
   ami           = "${data.aws_ami.amazon-linux-2.id}"
   instance_type = "${var.instance_type}"
   key_name      = "minecraft"
   security_groups = ["${aws_security_group.default.name}"]
   user_data = "${file("startup.sh")}"
+  block_duration_minutes="${var.time_limit}"
+  spot_type="one-time"
+  wait_for_fulfillment="true"
 
   tags = {
     Name = "Minecraft"
   }
+  availability_zone="us-west-2a"
+  # availability_zone="None"
 }
 
-resource "aws_eip" "default" {
-  instance = "${aws_instance.minecraft.id}"
-  vpc      = true
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = "/dev/sdm"
+  volume_id   = "${var.volume_id}"
+  instance_id = "${aws_spot_instance_request.minecraft.spot_instance_id}"
 }
 
 # Our default security group to access

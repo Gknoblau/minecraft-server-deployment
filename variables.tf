@@ -3,7 +3,13 @@ variable "aws_region" {
   
 }
 variable "instance_type" {
-  default     = "t2.micro"
-  
+  default     = "m5.large"
 }
 
+variable "time_limit" {
+  default     = 60
+}
+
+variable "volume_id" {
+  default  = "vol-0e7d185669a919a83"
+}
