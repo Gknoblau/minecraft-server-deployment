@@ -16,12 +16,12 @@ Deploy a Minecraft Server in AWS using Terrafrom
 
 ## Install
 
-##### Terraform
+#### Terraform
 ```
 brew install terraform 
 ```
 
-##### AWS Cli
+#### AWS Cli
 ```
 brew install awscli
 ```
@@ -55,30 +55,30 @@ Ensure that the parameters are set in `variables.tf`
 
 
 ## Deploy
-##### Create an [AWS Access key](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/)
-    - Set is as the `default` profile in ~/.aws/credentials
+#### Create an [AWS Access key](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/)
+- Set is as the `default` profile in ~/.aws/credentials
 
-##### Create an [AWS Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
-    - Name it `minecraft`
+#### Create an [AWS Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
+- Name it `minecraft`
 
-##### Create a [Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html)
-    - 10GB should be fine
-    - This is where we will store all the persistant data
-    - Set the `volume_id` in the `variables.tf` file
-![Create_Volume](https://user-images.githubusercontent.com/14353143/58445068-ecae7880-80af-11e9-97b7-42d3aad9d027.png)
+#### Create a [Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html)
+- 10GB should be fine
+- This is where we will store all the persistant data
+***volume_id***
+- Set the `volume_id` in the `variables.tf` file
 
-##### Initalize Terraform
+#### Initalize Terraform
 ```
 terraform init
 ```
 
-##### Apply Terraform
+#### Apply Terraform
 ```
 terraform apply
 ```
 The output will be an IP you can connect to in Minecraft
 
-##### Destroy Terraform
+#### Destroy Terraform
 ```
 terraform destroy
 ```
