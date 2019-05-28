@@ -1,3 +1,3 @@
-output "address" {
-  value = "${aws_spot_instance_request.minecraft.private_ip}"
+output "minecraft_server_address" {
+  value = "${aws_spot_instance_request.minecraft.public_ip}"
 }
